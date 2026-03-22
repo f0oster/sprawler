@@ -1,0 +1,85 @@
+{
+  "https://contoso.sharepoint.com/sites/engineering": {
+    "d": {
+      "results": [
+        {
+          "Id": 3,
+          "Title": "Engineering Owners",
+          "LoginName": "Engineering Owners",
+          "Description": "Site owners group",
+          "OwnerTitle": "Alice Johnson",
+          "Updated": ""
+        },
+        {
+          "Id": 4,
+          "Title": "Engineering Members",
+          "LoginName": "Engineering Members",
+          "Description": "Site members group",
+          "OwnerTitle": "Alice Johnson",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/marketing": {
+    "d": {
+      "results": [
+        {
+          "Id": 5,
+          "Title": "Marketing Owners",
+          "LoginName": "Marketing Owners",
+          "Description": "Site owners group",
+          "OwnerTitle": "Bob Smith",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/sales": {
+    "d": {
+      "results": [
+        {
+          "Id": 6,
+          "Title": "Sales Members",
+          "LoginName": "Sales Members",
+          "Description": "Site members group",
+          "OwnerTitle": "Carol Davis",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/hr": {
+    "d": {
+      "results": []
+    }
+  },
+  "https://contoso.sharepoint.com/sites/finance": {
+    "d": {
+      "results": [
+        {
+          "Id": 7,
+          "Title": "Finance Owners",
+          "LoginName": "Finance Owners",
+          "Description": "Finance site owners",
+          "OwnerTitle": "Eve Taylor",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/legal": {
+    "d": {
+      "results": [
+        {
+          "Id": 8,
+          "Title": "Legal Members",
+          "LoginName": "Legal Members",
+          "Description": "Legal site members",
+          "OwnerTitle": "Frank Garcia",
+          "Updated": ""
+        }
+      ]
+    }
+  }
+}

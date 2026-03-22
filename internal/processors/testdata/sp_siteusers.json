@@ -1,0 +1,263 @@
+{
+  "https://contoso.sharepoint.com/sites/engineering": {
+    "d": {
+      "results": [
+        {
+          "Email": "alice@contoso.com",
+          "Expiration": "",
+          "Id": 10,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|alice@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Alice Johnson",
+          "UserId": {"NameId": "10037ffe-a]b1c2d3", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "alice@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "grace@contoso.com",
+          "Expiration": "",
+          "Id": 11,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "i:0#.f|membership|grace@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Grace Lee",
+          "UserId": {"NameId": "10037ffe-d4e5f6a7", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "grace@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "",
+          "Expiration": "",
+          "Id": 12,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": true,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "SHAREPOINT\\system",
+          "PrincipalType": 1,
+          "Title": "System Account",
+          "UserId": {"NameId": "", "NameIdIssuer": ""},
+          "UserPrincipalName": null,
+          "Updated": ""
+        },
+        {
+          "Email": "",
+          "Expiration": "",
+          "Id": 13,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "c:0(.s|true",
+          "PrincipalType": 4,
+          "Title": "Everyone",
+          "UserId": {"NameId": "", "NameIdIssuer": ""},
+          "UserPrincipalName": null,
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/marketing": {
+    "d": {
+      "results": [
+        {
+          "Email": "bob@contoso.com",
+          "Expiration": "",
+          "Id": 20,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|bob@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Bob Smith",
+          "UserId": {"NameId": "10037ffe-b1c2d3e4", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "bob@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "",
+          "Expiration": "",
+          "Id": 21,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "i:0#.f|membership|spsearch@contoso.com",
+          "PrincipalType": 1,
+          "Title": "SharePoint Search",
+          "UserId": {"NameId": "10037ffe-search01", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "spsearch@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/sales": {
+    "d": {
+      "results": [
+        {
+          "Email": "carol@contoso.com",
+          "Expiration": "",
+          "Id": 30,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|carol@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Carol Davis",
+          "UserId": {"NameId": "10037ffe-c2d3e4f5", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "carol@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "henry@contoso.com",
+          "Expiration": "",
+          "Id": 31,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "i:0#.f|membership|henry@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Henry Wilson",
+          "UserId": {"NameId": "10037ffe-h1e2n3r4", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "henry@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "",
+          "Expiration": "",
+          "Id": 32,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "c:0-.f|rolemanager|spo-grid-all-users/aaaabbbb-cccc-dddd-eeee-ffffgggg0000",
+          "PrincipalType": 4,
+          "Title": "Everyone except external users",
+          "UserId": {"NameId": "", "NameIdIssuer": ""},
+          "UserPrincipalName": null,
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/hr": {
+    "d": {
+      "results": [
+        {
+          "Email": "dave@contoso.com",
+          "Expiration": "",
+          "Id": 40,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|dave@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Dave Brown",
+          "UserId": {"NameId": "10037ffe-d3e4f5a6", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "dave@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/finance": {
+    "d": {
+      "results": [
+        {
+          "Email": "eve@contoso.com",
+          "Expiration": "",
+          "Id": 50,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|eve@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Eve Taylor",
+          "UserId": {"NameId": "10037ffe-e4f5a6b7", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "eve@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "ivan@contoso.com",
+          "Expiration": "",
+          "Id": 51,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "i:0#.f|membership|ivan@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Ivan Moore",
+          "UserId": {"NameId": "10037ffe-i1v2a3n4", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "ivan@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "",
+          "Expiration": "",
+          "Id": 52,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": true,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "i:0i.t|00000003-0000-0ff1-ce00-000000000000|app@sharepoint",
+          "PrincipalType": 1,
+          "Title": "SharePoint App",
+          "UserId": {"NameId": "app@sharepoint", "NameIdIssuer": "00000003-0000-0ff1-ce00-000000000000"},
+          "UserPrincipalName": null,
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/legal": {
+    "d": {
+      "results": [
+        {
+          "Email": "frank@contoso.com",
+          "Expiration": "",
+          "Id": 60,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|frank@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Frank Garcia",
+          "UserId": {"NameId": "10037ffe-f5a6b7c8", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "frank@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "jane@contoso.com",
+          "Expiration": "",
+          "Id": 61,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "i:0#.f|membership|jane@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Jane Martinez",
+          "UserId": {"NameId": "10037ffe-j1a2n3e4", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "jane@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "https://contoso-my.sharepoint.com/personal/user1_contoso_com": {
+    "d": {
+      "results": [
+        {
+          "Email": "user1@contoso.com",
+          "Expiration": "",
+          "Id": 100,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|user1@contoso.com",
+          "PrincipalType": 1,
+          "Title": "User One",
+          "UserId": {"NameId": "10037ffe-u1s2e3r1", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "user1@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Email": "",
+          "Expiration": "",
+          "Id": 101,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": true,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "SHAREPOINT\\system",
+          "PrincipalType": 1,
+          "Title": "System Account",
+          "UserId": {"NameId": "", "NameIdIssuer": ""},
+          "UserPrincipalName": null,
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso-my.sharepoint.com/personal/user2_contoso_com": {
+    "d": {
+      "results": [
+        {
+          "Email": "user2@contoso.com",
+          "Expiration": "",
+          "Id": 200,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|user2@contoso.com",
+          "PrincipalType": 1,
+          "Title": "User Two",
+          "UserId": {"NameId": "10037ffe-u2s2e2r2", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "user2@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso-my.sharepoint.com/personal/user3_contoso_com": {
+    "d": {
+      "results": [
+        {
+          "Email": "user3@contoso.com",
+          "Expiration": "",
+          "Id": 300,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|user3@contoso.com",
+          "PrincipalType": 1,
+          "Title": "User Three",
+          "UserId": {"NameId": "10037ffe-u3s3e3r3", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "user3@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso-my.sharepoint.com/personal/orphan_contoso_com": {
+    "d": {
+      "results": [
+        {
+          "Email": "",
+          "Expiration": "",
+          "Id": 500,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": true,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": false,
+          "LoginName": "SHAREPOINT\\system",
+          "PrincipalType": 1,
+          "Title": "System Account",
+          "UserId": {"NameId": "", "NameIdIssuer": ""},
+          "UserPrincipalName": null,
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso-my.sharepoint.com/personal/locked_user_contoso_com": {
+    "d": {
+      "results": [
+        {
+          "Email": "locked_user@contoso.com",
+          "Expiration": "",
+          "Id": 400,
+          "IsEmailAuthenticationGuestUser": false,
+          "IsHiddenInUI": false,
+          "IsShareByEmailGuestUser": false,
+          "IsSiteAdmin": true,
+          "LoginName": "i:0#.f|membership|locked_user@contoso.com",
+          "PrincipalType": 1,
+          "Title": "Locked User",
+          "UserId": {"NameId": "10037ffe-l0ck3d01", "NameIdIssuer": "urn:federation:microsoftonline"},
+          "UserPrincipalName": "locked_user@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  }
+}

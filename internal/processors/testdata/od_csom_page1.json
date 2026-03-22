@@ -1,0 +1,63 @@
+[
+  {"_ObjectType_": "Microsoft.Online.SharePoint.TenantAdministration.SPOTenantWebTemplateCollection"},
+  {
+    "NextStartIndexFromSharePoint": "",
+    "_Child_Items_": [
+      {
+        "CreatedTime": "/Date(2023,0,10,8,0,0,0)/",
+        "LastContentModifiedDate": "/Date(2024,5,1,12,0,0,0)/",
+        "LockState": "",
+        "Owner": "user1@contoso.com",
+        "SiteId": "/Guid(aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa)/",
+        "StorageUsage": 512000,
+        "Template": "SPSPERS#10",
+        "Title": "User One",
+        "Url": "https://contoso-my.sharepoint.com/personal/user1_contoso_com"
+      },
+      {
+        "CreatedTime": "/Date(2023,1,15,10,30,0,0)/",
+        "LastContentModifiedDate": "/Date(2024,4,20,9,0,0,0)/",
+        "LockState": "",
+        "Owner": "user2@contoso.com",
+        "SiteId": "/Guid(bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb)/",
+        "StorageUsage": 1024000,
+        "Template": "SPSPERS#10",
+        "Title": "User Two",
+        "Url": "https://contoso-my.sharepoint.com/personal/user2_contoso_com"
+      },
+      {
+        "CreatedTime": "/Date(2023,2,20,14,0,0,0)/",
+        "LastContentModifiedDate": "/Date(2024,3,10,16,30,0,0)/",
+        "LockState": "",
+        "Owner": "user3@contoso.com",
+        "SiteId": "/Guid(cccccccc-cccc-cccc-cccc-cccccccccccc)/",
+        "StorageUsage": 256000,
+        "Template": "SPSPERS#10",
+        "Title": "User Three",
+        "Url": "https://contoso-my.sharepoint.com/personal/user3_contoso_com"
+      },
+      {
+        "CreatedTime": "/Date(2022,11,5,9,0,0,0)/",
+        "LastContentModifiedDate": "/Date(2023,6,15,8,0,0,0)/",
+        "LockState": "NoAccess",
+        "Owner": "locked_user@contoso.com",
+        "SiteId": "/Guid(dddddddd-dddd-dddd-dddd-dddddddddddd)/",
+        "StorageUsage": 64000,
+        "Template": "SPSPERS#10",
+        "Title": "Locked User",
+        "Url": "https://contoso-my.sharepoint.com/personal/locked_user_contoso_com"
+      },
+      {
+        "CreatedTime": "/Date(2022,8,1,11,0,0,0)/",
+        "LastContentModifiedDate": "/Date(2023,5,20,14,0,0,0)/",
+        "LockState": "",
+        "Owner": "",
+        "SiteId": "/Guid(eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee)/",
+        "StorageUsage": 32000,
+        "Template": "SPSPERS#10",
+        "Title": "Orphan Site",
+        "Url": "https://contoso-my.sharepoint.com/personal/orphan_contoso_com"
+      }
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "i:0#.f|membership|user1@contoso.com": {
+    "d": {
+      "PersonalUrl": "https://contoso-my.sharepoint.com/personal/user1_contoso_com/",
+      "UserProfileProperties": {
+        "results": [
+          {"Key": "SID", "Value": "i:0h.f|membership|S-1-5-21-1111111111-1111111111-1111111111-11111@live.com"},
+          {"Key": "SPS-PersonalSiteInstantiationState", "Value": "2"},
+          {"Key": "msOnline-ObjectId", "Value": "aaa11111-1111-1111-1111-111111111111"}
+        ]
+      }
+    }
+  },
+  "i:0#.f|membership|user2@contoso.com": {
+    "d": {
+      "PersonalUrl": "https://contoso-my.sharepoint.com/personal/user2_contoso_com/",
+      "UserProfileProperties": {
+        "results": [
+          {"Key": "SID", "Value": "i:0h.f|membership|S-1-5-21-2222222222-2222222222-2222222222-22222@live.com"},
+          {"Key": "SPS-PersonalSiteInstantiationState", "Value": "2"},
+          {"Key": "msOnline-ObjectId", "Value": "bbb22222-2222-2222-2222-222222222222"}
+        ]
+      }
+    }
+  },
+  "i:0#.f|membership|user3@contoso.com": {
+    "d": {
+      "PersonalUrl": "https://contoso-my.sharepoint.com/personal/user3_contoso_com/",
+      "UserProfileProperties": {
+        "results": [
+          {"Key": "SID", "Value": "i:0h.f|membership|S-1-5-21-3333333333-3333333333-3333333333-33333@live.com"},
+          {"Key": "SPS-PersonalSiteInstantiationState", "Value": "2"},
+          {"Key": "msOnline-ObjectId", "Value": "ccc33333-3333-3333-3333-333333333333"}
+        ]
+      }
+    }
+  },
+  "i:0#.f|membership|locked_user@contoso.com": {
+    "d": {
+      "PersonalUrl": "https://contoso-my.sharepoint.com/personal/locked_user_contoso_com/",
+      "UserProfileProperties": {
+        "results": [
+          {"Key": "SID", "Value": "i:0h.f|membership|S-1-5-21-4444444444-4444444444-4444444444-44444@live.com"},
+          {"Key": "SPS-PersonalSiteInstantiationState", "Value": "2"},
+          {"Key": "msOnline-ObjectId", "Value": "ddd44444-4444-4444-4444-444444444444"}
+        ]
+      }
+    }
+  }
+}

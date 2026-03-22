@@ -1,0 +1,133 @@
+[Main] 03:11:00 [INFO] Starting Sprawler SharePoint Enumeration Tool
+[Main] 03:11:00 [INFO] Config: DB=./data/spo.db (recreate=true), batch=100000, flush=1m0s, queue=100000
+[Main] 03:11:00 [INFO] Config: SP workers=6+4, pageSize=5000, expected=250000 | OD workers=6, buf=500, expected=350000
+[Main] 03:11:00 [INFO] Config: admin=admin@contoso.com (https://contoso-admin.sharepoint.com)
+[Main] 03:11:00 [INFO] Running processor 1/2: SharePoint
+[SP  ] 03:11:00 [INFO] Starting SharePoint processing
+[API ] 03:11:00 [INFO] Enumerating SharePoint sites (5000 per page, max 0 pages)
+[SP  ] 03:16:00 [INFO] [5m0s] Sites: 23k/250k (407 inflight) | 1.7M users | skip: 1 template, 1 tenant_root
+                       6/6 workers | 79.4/sec | ETA: 47m 27s | API: 23833 req 66ms [200:23833] | DB: 1.6M, 16549 queued | Buf: sites->users 400/400
+[SP  ] 03:21:00 [INFO] [10m0s] Sites: 50k/250k (407 inflight) | 2.8M users | skip: 7495 template, 1 tenant_root
+                       6/6 workers | 89.5/sec | ETA: 37m 6s | API: 50697 req 62ms [200:50697] | DB: 2.8M, 5203 queued | Buf: sites->users 400/400
+[SP  ] 03:26:00 [INFO] [15m0s] Sites: 78k/250k (407 inflight) | 3.6M users | skip: 11450 template, 1 tenant_root
+                       6/6 workers | 94.2/sec | ETA: 30m 14s | API: 78978 req 60ms [200:78978] | DB: 3.6M, 633 queued | Buf: sites->users 400/400
+[SP  ] 03:31:00 [INFO] [20m0s] Sites: 107k/250k (407 inflight) | 4.3M users | skip: 14378 template, 1 tenant_root
+                       6/6 workers | 96.5/sec | ETA: 24m 31s | API: 107948 req 58ms [200:107948] | DB: 4.4M, 477 queued | Buf: sites->users 400/400
+[SP  ] 03:36:00 [INFO] [25m0s] Sites: 136k/250k (407 inflight) | 4.9M users | skip: 18285 template, 1 tenant_root
+                       6/6 workers | 96.2/sec | ETA: 19m 36s | API: 136819 req 57ms [200:136819] | DB: 5.0M, 509 queued | Buf: sites->users 400/400
+[SP  ] 03:41:00 [INFO] [30m0s] Sites: 166k/250k (407 inflight) | 5.5M users | skip: 22984 template, 1 tenant_root
+                       6/6 workers | 97.7/sec | ETA: 14m 18s | API: 166140 req 57ms [200:166140] | DB: 5.7M, 466 queued | Buf: sites->users 400/400
+[SP  ] 03:46:00 [INFO] [35m0s] Sites: 195k/250k (407 inflight) | 6.1M users | skip: 27366 template, 1 tenant_root
+                       6/6 workers | 99.3/sec | ETA: 9m 4s | API: 195933 req 56ms [200:195933] | DB: 6.2M, 423 queued | Buf: sites->users 400/400
+[API ] 03:49:30 [INFO] Throttle gate: 429 received, pausing all requests for 5s
+[API ] 03:49:30 [WARN] API Throttling Error: GET https://contoso.sharepoint.com/sites/redactedsite01/_api/Web/SiteUsers -> 429
+[SP  ] 03:49:30 [INFO] Throttle scaler: throttle detected (delta=1)
+[SP  ] 03:49:30 [INFO] Throttle scaler: reducing concurrency 6 -> 3
+[API ] 03:49:37 [INFO] SharePoint site discovery complete: 249811 sites found (50 pages)
+[SP  ] 03:49:43 [INFO] Site filtering complete
+[SP  ] 03:49:59 [INFO] API: 218448 req, 56ms avg [200:218447 429:1]
+[SP  ] 03:49:59 [INFO] Transport - Gate activations: 1, Total gate wait: 24.882s, Transport retries: 0
+[Main] 03:49:59 [INFO] SharePoint: 249811 sites (31415 skipped: 1 tenant_root, 31414 template) | 218396 ok | 6.5M users | 39.0m | Scaler: 3/6 workers (1 down, 0 up, min 3, 29.1s reduced)
+[Main] 03:49:59 [INFO] Running processor 2/2: OneDrive
+[OD  ] 03:49:59 [INFO] Starting OneDrive processing
+[API ] 03:49:59 [INFO] Starting OneDrive site enumeration: filter=Url -like 'https://contoso-my.sharepoint.com/personal/', maxSites=0
+[OD  ] 03:54:59 [INFO] [5m0s] Sites: 12k/350k (1007 inflight) | 139k users, 12k profiles
+                       6/6 workers | 41.4/sec | ETA: 2h 15m | API: 24852 req 65ms [200:24852] | DB: 6.8M, 0 queued | Buf: sites->workers 1000/1000
+[API ] 03:55:30 [INFO] Throttle gate: 429 received, pausing all requests for 46s
+[API ] 03:55:30 [WARN] API Throttling Error: GET https://contoso-my.sharepoint.com/personal/user01_contoso_com/_api/Web/SiteUsers -> 429
+[OD  ] 03:55:39 [INFO] Throttle scaler: throttle detected (delta=1)
+[OD  ] 03:55:39 [INFO] Throttle scaler: reducing concurrency 6 -> 3
+[OD  ] 03:56:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 3 -> 4
+[OD  ] 03:57:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 4 -> 5
+[OD  ] 03:58:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 5 -> 6
+[OD  ] 03:59:59 [INFO] [10m0s] Sites: 21k/350k (1007 inflight) | 265k users, 20k profiles
+                       6/6 workers (1 scaled) | 28.9/sec | ETA: 3h 9m | API: 42204 req 71ms [200:42203 429:1] | DB: 6.9M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:04:59 [INFO] [15m0s] Sites: 33k/350k (1007 inflight) | 614k users, 32k profiles
+                       6/6 workers (1 scaled) | 40.5/sec | ETA: 2h 10m | API: 66326 req 70ms [200:66325 429:1] | DB: 7.3M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:09:59 [INFO] [20m0s] Sites: 45k/350k (1007 inflight) | 935k users, 43k profiles
+                       6/6 workers (1 scaled) | 42.4/sec | ETA: 1h 59m | API: 91424 req 69ms [200:91423 429:1] | DB: 7.6M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:14:59 [INFO] [25m0s] Sites: 58k/350k (1007 inflight) | 1.2M users, 55k profiles
+                       6/6 workers (1 scaled) | 42.5/sec | ETA: 1h 54m | API: 116573 req 68ms [200:116572 429:1] | DB: 8.0M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:19:59 [INFO] [30m0s] Sites: 71k/350k (1007 inflight) | 1.5M users, 67k profiles
+                       6/6 workers (1 scaled) | 42.7/sec | ETA: 1h 48m | API: 141925 req 67ms [200:141924 429:1] | DB: 8.3M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:24:59 [INFO] [35m0s] Sites: 84k/350k (1007 inflight) | 1.7M users, 79k profiles
+                       6/6 workers (1 scaled) | 42.8/sec | ETA: 1h 43m | API: 167591 req 67ms [200:167590 429:1] | DB: 8.5M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:29:59 [INFO] [40m0s] Sites: 96k/350k (1007 inflight) | 2.0M users, 91k profiles
+                       6/6 workers (1 scaled) | 41.7/sec | ETA: 1h 41m | API: 192271 req 67ms [200:192270 429:1] | DB: 8.8M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:34:59 [INFO] [45m0s] Sites: 109k/350k (1007 inflight) | 2.3M users, 102k profiles
+                       6/6 workers (1 scaled) | 42.2/sec | ETA: 1h 34m | API: 217366 req 67ms [200:217365 429:1] | DB: 9.2M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:39:59 [INFO] [50m0s] Sites: 122k/350k (1007 inflight) | 2.6M users, 115k profiles
+                       6/6 workers (1 scaled) | 42.3/sec | ETA: 1h 29m | API: 242703 req 67ms [200:242702 429:1] | DB: 9.4M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:44:59 [INFO] [55m0s] Sites: 135k/350k (1007 inflight) | 2.9M users, 127k profiles
+                       6/6 workers (1 scaled) | 42.8/sec | ETA: 1h 23m | API: 268158 req 66ms [200:268157 429:1] | DB: 9.7M, 0 queued | Buf: sites->workers 1000/1000
+[API ] 04:45:31 [INFO] Throttle gate: 429 received, pausing all requests for 37s
+[API ] 04:45:31 [WARN] API Throttling Error: GET https://contoso-my.sharepoint.com/personal/user02_contoso_com/_api/Web/SiteUsers -> 429
+[OD  ] 04:45:39 [INFO] Throttle scaler: throttle detected (delta=1)
+[OD  ] 04:45:39 [INFO] Throttle scaler: reducing concurrency 6 -> 3
+[OD  ] 04:46:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 3 -> 4
+[OD  ] 04:47:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 4 -> 5
+[OD  ] 04:48:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 5 -> 6
+[OD  ] 04:49:59 [INFO] [1h0m0s] Sites: 144k/350k (1007 inflight) | 3.1M users, 136k profiles
+                       6/6 workers (2 scaled) | 30.9/sec | ETA: 1h 50m | API: 286458 req 67ms [200:286456 429:2] | DB: 10.0M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:54:59 [INFO] [1h5m0s] Sites: 157k/350k (1007 inflight) | 3.4M users, 148k profiles
+                       6/6 workers (2 scaled) | 42.6/sec | ETA: 1h 15m | API: 312000 req 67ms [200:311998 429:2] | DB: 10.3M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 04:59:59 [INFO] [1h10m0s] Sites: 169k/350k (1007 inflight) | 3.6M users, 160k profiles
+                       6/6 workers (2 scaled) | 42.6/sec | ETA: 1h 10m | API: 337547 req 66ms [200:337545 429:2] | DB: 10.6M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:04:59 [INFO] [1h15m0s] Sites: 182k/350k (1007 inflight) | 3.9M users, 171k profiles
+                       6/6 workers (2 scaled) | 41.4/sec | ETA: 1h 7m | API: 362166 req 66ms [200:362164 429:2] | DB: 10.9M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:09:59 [INFO] [1h20m0s] Sites: 195k/350k (1007 inflight) | 4.3M users, 183k profiles
+                       6/6 workers (2 scaled) | 42.5/sec | ETA: 1h 0m | API: 387448 req 66ms [200:387446 429:2] | DB: 11.3M, 0 queued | Buf: sites->workers 1000/1000
+[API ] 05:14:31 [INFO] Throttle gate: 429 received, pausing all requests for 50s
+[API ] 05:14:31 [WARN] API Throttling Error: GET https://contoso-my.sharepoint.com/personal/user03_contoso_com/_api/Web/SiteUsers -> 429
+[OD  ] 05:14:39 [INFO] Throttle scaler: throttle detected (delta=1)
+[OD  ] 05:14:39 [INFO] Throttle scaler: reducing concurrency 6 -> 3
+[OD  ] 05:14:59 [INFO] [1h25m0s] Sites: 205k/350k (1007 inflight) | 4.6M users, 193k profiles
+                       3/6 workers (3 scaled) | 35.6/sec | ETA: 1h 7m | API: 408593 req 67ms [200:408590 429:3] | DB: 11.6M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:15:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 3 -> 4
+[OD  ] 05:16:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 4 -> 5
+[OD  ] 05:17:39 [INFO] Throttle scaler: all signals quiet, increasing concurrency 5 -> 6
+[OD  ] 05:19:59 [INFO] [1h30m0s] Sites: 214k/350k (1007 inflight) | 4.8M users, 201k profiles
+                       6/6 workers (3 scaled) | 30.6/sec | ETA: 1h 13m | API: 426700 req 67ms [200:426697 429:3] | DB: 11.9M, 0 queued | Buf: sites->workers 1000/1000
+[API ] 05:21:59 [INFO] Throttle gate: 429 received, pausing all requests for 55s
+[API ] 05:21:59 [WARN] API Throttling Error: GET https://contoso-my.sharepoint.com/personal/user04_contoso_com/_api/Web/SiteUsers -> 429
+[OD  ] 05:21:59 [INFO] Throttle scaler: throttle detected (delta=1)
+[OD  ] 05:21:59 [INFO] Throttle scaler: reducing concurrency 6 -> 3
+[OD  ] 05:22:59 [INFO] Throttle scaler: all signals quiet, increasing concurrency 3 -> 4
+[OD  ] 05:23:59 [INFO] Throttle scaler: all signals quiet, increasing concurrency 4 -> 5
+[OD  ] 05:24:59 [INFO] Throttle scaler: all signals quiet, increasing concurrency 5 -> 6
+[OD  ] 05:24:59 [INFO] [1h35m0s] Sites: 223k/350k (1007 inflight) | 5.1M users, 209k profiles
+                       6/6 workers (4 scaled) | 28.6/sec | ETA: 1h 13m | API: 443719 req 68ms [200:443715 429:4] | DB: 12.2M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:29:59 [INFO] [1h40m0s] Sites: 236k/350k (1007 inflight) | 5.6M users, 221k profiles
+                       6/6 workers (4 scaled) | 42.8/sec | ETA: 44m 15s | API: 469246 req 68ms [200:469242 429:4] | DB: 12.7M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:34:59 [INFO] [1h45m0s] Sites: 249k/350k (1007 inflight) | 6.0M users, 233k profiles
+                       6/6 workers (4 scaled) | 44.8/sec | ETA: 37m 16s | API: 495752 req 68ms [200:495748 429:4] | DB: 13.1M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:39:59 [INFO] [1h50m0s] Sites: 263k/350k (1007 inflight) | 6.4M users, 245k profiles
+                       6/6 workers (4 scaled) | 44.2/sec | ETA: 32m 46s | API: 522061 req 67ms [200:522057 429:4] | DB: 13.5M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:44:59 [INFO] [1h55m0s] Sites: 276k/350k (1007 inflight) | 6.6M users, 258k profiles
+                       6/6 workers (4 scaled) | 43.6/sec | ETA: 28m 15s | API: 548224 req 67ms [200:548220 429:4] | DB: 13.8M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:49:59 [INFO] [2h0m0s] Sites: 289k/350k (1007 inflight) | 6.8M users, 270k profiles
+                       6/6 workers (4 scaled) | 44.1/sec | ETA: 22m 55s | API: 574557 req 67ms [200:574553 429:4] | DB: 14.0M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 05:54:59 [INFO] [2h5m0s] Sites: 302k/350k (1007 inflight) | 7.2M users, 283k profiles
+                       6/6 workers (4 scaled) | 44.4/sec | ETA: 17m 46s | API: 600914 req 67ms [200:600910 429:4] | DB: 14.4M, 0 queued | Buf: sites->workers 1000/1000
+[API ] 05:55:56 [INFO] Throttle gate: 429 received, pausing all requests for 46s
+[API ] 05:55:56 [WARN] API Throttling Error: GET https://contoso-admin.sharepoint.com/_api/sp.userprofiles.peoplemanager/GetPropertiesFor('i%3A0%23.f%7Cmembership%7Cuser05%40contoso.com') -> 429
+[OD  ] 05:55:59 [INFO] Throttle scaler: throttle detected (delta=1)
+[OD  ] 05:55:59 [INFO] Throttle scaler: reducing concurrency 6 -> 3
+[OD  ] 05:56:59 [INFO] Throttle scaler: all signals quiet, increasing concurrency 3 -> 4
+[OD  ] 05:57:59 [INFO] Throttle scaler: all signals quiet, increasing concurrency 4 -> 5
+[OD  ] 05:58:59 [INFO] Throttle scaler: all signals quiet, increasing concurrency 5 -> 6
+[OD  ] 05:59:59 [INFO] [2h10m0s] Sites: 311k/350k (1007 inflight) | 7.4M users, 292k profiles
+                       6/6 workers (5 scaled) | 31.1/sec | ETA: 20m 22s | API: 619521 req 67ms [200:619516 429:5] | DB: 14.6M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 06:04:59 [INFO] [2h15m0s] Sites: 324k/350k (1007 inflight) | 7.6M users, 304k profiles
+                       6/6 workers (5 scaled) | 42.2/sec | ETA: 10m 1s | API: 644779 req 67ms [200:644774 429:5] | DB: 14.8M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 06:09:59 [INFO] [2h20m0s] Sites: 336k/350k (1007 inflight) | 7.8M users, 315k profiles
+                       6/6 workers (5 scaled) | 40.8/sec | ETA: 5m 21s | API: 669240 req 67ms [200:669235 429:5] | DB: 15.1M, 0 queued | Buf: sites->workers 1000/1000
+[OD  ] 06:14:59 [INFO] [2h25m0s] Sites: 349k/350k (1007 inflight) | 8.1M users, 327k profiles
+                       6/6 workers (5 scaled) | 42.3/sec | ETA: 10s | API: 694587 req 67ms [200:694582 429:5] | DB: 15.4M, 0 queued | Buf: sites->workers 1000/1000
+[API ] 06:18:50 [INFO] OneDrive enumeration complete: 360769 total sites (241 pages)
+[OD  ] 06:19:25 [INFO] API: 716941 req, 67ms avg [200:716936 429:5]
+[OD  ] 06:19:25 [INFO] Transport - Gate activations: 5, Total gate wait: 19m28.92s, Transport retries: 0
+[Main] 06:19:25 [INFO] OneDrive: 360769 sites (338466 profiles, 22303 orphaned, 4850 locked) | 8.3M users | 2.5h | Scaler: 6/6 workers (5 down, 15 up, min 3, 15.0m reduced)
+[Main] 06:19:25 [INFO] Archiving database
+[DB  ] 06:19:27 [INFO] Closed: 15.6M written (18368/sec), 244 flushes | site_users: 14.7M, sites: 579k, user_profiles: 338k
+[Main] 06:19:27 [INFO] SharePoint enumeration completed successfully!

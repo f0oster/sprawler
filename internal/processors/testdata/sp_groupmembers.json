@@ -1,0 +1,110 @@
+{
+  "https://contoso.sharepoint.com/sites/engineering|3": {
+    "d": {
+      "results": [
+        {
+          "Id": 10,
+          "Title": "Alice Johnson",
+          "LoginName": "i:0#.f|membership|alice@contoso.com",
+          "Email": "alice@contoso.com",
+          "PrincipalType": 1,
+          "UserPrincipalName": "alice@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/engineering|4": {
+    "d": {
+      "results": [
+        {
+          "Id": 10,
+          "Title": "Alice Johnson",
+          "LoginName": "i:0#.f|membership|alice@contoso.com",
+          "Email": "alice@contoso.com",
+          "PrincipalType": 1,
+          "UserPrincipalName": "alice@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Id": 11,
+          "Title": "Grace Lee",
+          "LoginName": "i:0#.f|membership|grace@contoso.com",
+          "Email": "grace@contoso.com",
+          "PrincipalType": 1,
+          "UserPrincipalName": "grace@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/marketing|5": {
+    "d": {
+      "results": [
+        {
+          "Id": 20,
+          "Title": "Bob Smith",
+          "LoginName": "i:0#.f|membership|bob@contoso.com",
+          "Email": "bob@contoso.com",
+          "PrincipalType": 1,
+          "UserPrincipalName": "bob@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/sales|6": {
+    "d": {
+      "results": [
+        {
+          "Id": 30,
+          "Title": "Carol Davis",
+          "LoginName": "i:0#.f|membership|carol@contoso.com",
+          "Email": "carol@contoso.com",
+          "PrincipalType": 1,
+          "UserPrincipalName": "carol@contoso.com",
+          "Updated": ""
+        },
+        {
+          "Id": 31,
+          "Title": "Henry Wilson",
+          "LoginName": "i:0#.f|membership|henry@contoso.com",
+          "Email": "henry@contoso.com",
+          "PrincipalType": 1,
+          "UserPrincipalName": "henry@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/finance|7": {
+    "d": {
+      "results": [
+        {
+          "Id": 50,
+          "Title": "Eve Taylor",
+          "LoginName": "i:0#.f|membership|eve@contoso.com",
+          "Email": "eve@contoso.com",
+          "PrincipalType": 1,
+          "UserPrincipalName": "eve@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  },
+  "https://contoso.sharepoint.com/sites/legal|8": {
+    "d": {
+      "results": [
+        {
+          "Id": 60,
+          "Title": "Frank Garcia",
+          "LoginName": "i:0#.f|membership|frank@contoso.com",
+          "Email": "frank@contoso.com",
+          "PrincipalType": 1,
+          "UserPrincipalName": "frank@contoso.com",
+          "Updated": ""
+        }
+      ]
+    }
+  }
+}

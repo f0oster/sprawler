@@ -1,0 +1,76 @@
+# --- Go / build artifacts
+bin/
+dist/
+build/
+__debug_bin*
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# --- IDE / editor
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS noise
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- Exclude Database files
+*.db
+*.db-shm
+*.db-wal
+*.sq3
+*.sq3-shm
+*.sq3-wal
+*.sqlite
+*.sqlite3
+
+# --- Exclude Certificates/Env/Secrets
+*.pfx
+*.p12
+*.crt
+*.key
+*.pem
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# --- Exclude logs / temp
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# --- Exclude .json files unless explicitly included
+*.json
+!**/testdata/*.json
+
+# --- Exclude Hidden folders (dot-dirs) except ones we want tracked
+.*/
+
+# --- Explicitly allow these hidden folders / files
+!.gitattributes
+!.gitignore
+!.github/
+!.devcontainer/
+
+
+# --- Exclude .md files unless explicitly included
+*.md
+!README.md
+!CONTRIBUTING.md
+!docs/**/*.md
