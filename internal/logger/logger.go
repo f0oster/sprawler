@@ -37,6 +37,11 @@ func NewLogger(name string) *Logger {
 	}
 }
 
+// SetLevel overrides the logger's verbosity, independent of LOG_LEVEL (tests).
+func (l *Logger) SetLevel(level LogLevel) {
+	l.level = level
+}
+
 // getLogLevelFromEnv determines log level from LOG_LEVEL environment variable.
 //
 // Returns LogLevelInfo if LOG_LEVEL is unset or contains an invalid value.

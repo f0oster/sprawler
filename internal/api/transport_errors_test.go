@@ -11,6 +11,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"golang.org/x/net/http2"
 )
 
 func TestIsConnectionReset(t *testing.T) {
@@ -46,6 +47,11 @@ func TestIsTransientNetError(t *testing.T) {
 			Op:  "read",
 			Err: &os.SyscallError{Syscall: "read", Err: syscall.ECONNRESET},
 		}, true},
+		{"http2 stream CANCEL from peer", http2.StreamError{StreamID: 133843, Code: http2.ErrCodeCancel}, true},
+		{"http2 REFUSED_STREAM", http2.StreamError{StreamID: 1, Code: http2.ErrCodeRefusedStream}, true},
+		{"http2 INTERNAL_ERROR wrapped", fmt.Errorf("unable to request api: %w", http2.StreamError{Code: http2.ErrCodeInternal}), true},
+		{"http2 GOAWAY", http2.GoAwayError{ErrCode: http2.ErrCodeEnhanceYourCalm}, true},
+		{"http2 stream PROTOCOL_ERROR not retried", http2.StreamError{Code: http2.ErrCodeProtocol}, false},
 		{"generic error", errors.New("permission denied"), false},
 		{"context.Canceled", context.Canceled, false},
 		{"nil", nil, false},

@@ -112,7 +112,8 @@ func (t *ThrottledTransport) RoundTrip(req *http.Request) (*http.Response, error
 		}
 		t.transportRetries.Add(1)
 		backoff := t.retryBackoffs[attempt%len(t.retryBackoffs)]
-		t.logger.Warnf("Transport retry %d/%d for %s %s: %v", attempt+1, t.maxRetries, req.Method, req.URL.Host, err)
+		// Per-attempt retry; logged at Debug. Aggregate count is in TransportStats.
+		t.logger.Debugf("Transport retry %d/%d for %s %s: %v", attempt+1, t.maxRetries, req.Method, req.URL.Host, err)
 		select {
 		case <-time.After(backoff):
 		case <-req.Context().Done():
@@ -251,31 +252,45 @@ func (c *Client) onResponse(event *gosip.HookEvent) {
 	}
 }
 
-// onError fires once per logical request, after all retries are exhausted.
-// Increments throttlingCount and networkErrors for the scaler's backpressure
-// logic. Status codes are the primary observability mechanism.
+// onError fires for both retried and terminal failures. A nil Error means an
+// intermediate 429 (gosip's pre-retry hook); a non-nil Error is terminal.
+// Terminal logs at Warn (transient/throttle) or Error (non-retryable), retries
+// at Debug; counters increment on every firing.
 func (c *Client) onError(event *gosip.HookEvent) {
-	// Record HTTP status code if available
 	if event.StatusCode > 0 {
 		c.recordStatusCode(event.StatusCode)
 	}
 
-	// Throttling counter for scaler backpressure
+	terminal := event.Error != nil
+
 	if event.StatusCode == 429 || event.StatusCode == 503 {
 		c.metrics.throttlingCount.Add(1)
-		c.logger.Warnf("API Throttling Error: %s %s -> %d", event.Request.Method, event.Request.URL.String(), event.StatusCode)
+		if terminal {
+			c.logger.Warnf("API throttled, gave up after retries: %s %s -> %d",
+				event.Request.Method, event.Request.URL.String(), event.StatusCode)
+		} else {
+			c.logger.Debugf("API throttled, retrying: %s %s -> %d",
+				event.Request.Method, event.Request.URL.String(), event.StatusCode)
+		}
 		return
 	}
 
-	if event.Error == nil {
-		c.logger.Errorf("API Error: %s %s -> %d (no error details provided)",
+	if !terminal {
+		// Unreachable with current gosip (only 429 fires a nil-error onError).
+		c.logger.Debugf("API non-terminal error hook: %s %s -> %d",
 			event.Request.Method, event.Request.URL.String(), event.StatusCode)
 		return
 	}
 
-	// Network error counter for scaler backpressure
 	if isTransientNetError(event.Error) {
 		c.metrics.networkErrors.Add(1)
+		if event.Request != nil && event.Request.URL != nil {
+			c.logger.Warnf("API network error, gave up after transport retries: %s %s -> %v",
+				event.Request.Method, event.Request.URL.String(), event.Error)
+		} else {
+			c.logger.Warnf("API network error, gave up after transport retries: %v", event.Error)
+		}
+		return
 	}
 
 	if event.Request != nil && event.Request.URL != nil {

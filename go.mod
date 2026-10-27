@@ -29,7 +29,7 @@ require (
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/net v0.34.0 // indirect
+	golang.org/x/net v0.34.0
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 

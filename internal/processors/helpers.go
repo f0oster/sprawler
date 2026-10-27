@@ -15,6 +15,8 @@ import (
 	"sprawler/internal/api"
 	"sprawler/internal/logger"
 	"sprawler/internal/model"
+
+	"golang.org/x/net/http2"
 )
 
 // formatCompact formats a number compactly: exact below 10k, "Xk" for 10k+, "X.YM" for 1M+.
@@ -82,6 +84,16 @@ func parseError(err error) (model.ErrorCategory, int) {
 	}
 	var opErr *net.OpError
 	if errors.As(err, &opErr) {
+		return model.ErrNetwork, 0
+	}
+	// HTTP/2 stream resets / GOAWAY carry no HTTP status; classify as network
+	// to match the transport retry logic (see api.isHTTP2StreamError).
+	var streamErr http2.StreamError
+	if errors.As(err, &streamErr) {
+		return model.ErrNetwork, 0
+	}
+	var goAwayErr http2.GoAwayError
+	if errors.As(err, &goAwayErr) {
 		return model.ErrNetwork, 0
 	}
 	return model.ErrUnknown, 0

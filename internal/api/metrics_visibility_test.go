@@ -1,6 +1,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -12,6 +13,7 @@ import (
 	"github.com/koltyakov/gosip"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"golang.org/x/net/http2"
 
 	"sprawler/internal/logger"
 )
@@ -345,4 +347,99 @@ func TestMetricsVisibility_503ThenConnectionReset(t *testing.T) {
 	assert.Equal(t, int64(1), c.GetNetworkErrorCount(), "ECONNRESET classified as network error")
 	assert.Equal(t, int64(1), m.StatusCodes[503], "503 should be visible")
 	assert.Equal(t, int64(1), c.GetThrottlingCount(), "503 should count as throttling")
+}
+
+// --- onError log-level classification tests ---
+//
+// Capture log output at TRACE and assert the level tag per failure class;
+// counter assertions guard against metric regressions.
+
+// captureLogs redirects the logger to a buffer at TRACE so every level is emitted
+// and the [LEVEL] tag identifies which fired.
+func captureLogs(c *Client) *bytes.Buffer {
+	var buf bytes.Buffer
+	c.logger.SetLevel(logger.LogLevelTrace)
+	c.logger.SetOutput(&buf)
+	return &buf
+}
+
+// TestOnError_TerminalTransient_LogsWarn verifies an abandoned transient network
+// error (HTTP/2 stream cancel) logs at Warn, not Error, and counts as a network error.
+func TestOnError_TerminalTransient_LogsWarn(t *testing.T) {
+	transport := &responseSequenceTransport{
+		entries: []transportResponse{{err: http2.StreamError{StreamID: 1, Code: http2.ErrCodeCancel}}},
+	}
+	c := newGosipTestClientWithTransport(transport)
+	logs := captureLogs(c)
+
+	req, _ := http.NewRequest("GET", "https://test.sharepoint.com/_api/web", nil)
+	_, err := c.gosipClient.Execute(req)
+	require.Error(t, err)
+
+	out := logs.String()
+	assert.Equal(t, int64(1), c.GetNetworkErrorCount(), "stream cancel counts as network error")
+	assert.Contains(t, out, "[WARN]")
+	assert.Contains(t, out, "gave up after transport retries")
+	assert.NotContains(t, out, "[ERROR]", "transient failure must not log at Error")
+}
+
+// TestOnError_TerminalNonRetryable_LogsError verifies a genuine non-retryable
+// failure (403) logs at Error and is not misclassified as transient or throttle.
+func TestOnError_TerminalNonRetryable_LogsError(t *testing.T) {
+	srv := httptest.NewServer(statusSequenceHandler(403))
+	defer srv.Close()
+
+	c := newGosipTestClient(srv.URL, nil)
+	logs := captureLogs(c)
+
+	req, _ := http.NewRequest("GET", srv.URL+"/_api/web", nil)
+	resp, err := c.gosipClient.Execute(req)
+	require.Error(t, err)
+	resp.Body.Close()
+
+	out := logs.String()
+	assert.Contains(t, out, "[ERROR] API Error")
+	assert.Equal(t, int64(0), c.GetNetworkErrorCount())
+	assert.Equal(t, int64(0), c.GetThrottlingCount())
+}
+
+// TestOnError_429Exhausted_LogsRetryThenGaveUp verifies the per-attempt 429 logs
+// at Debug ("retrying") and the terminal 429 at Warn ("gave up"), with the
+// throttle counter incrementing on both firings.
+func TestOnError_429Exhausted_LogsRetryThenGaveUp(t *testing.T) {
+	srv := httptest.NewServer(statusSequenceHandler(429))
+	defer srv.Close()
+
+	c := newGosipTestClient(srv.URL, map[int]int{429: 1})
+	logs := captureLogs(c)
+
+	req, _ := http.NewRequest("GET", srv.URL+"/_api/web", nil)
+	resp, err := c.gosipClient.Execute(req)
+	require.Error(t, err)
+	resp.Body.Close()
+
+	out := logs.String()
+	assert.Contains(t, out, "API throttled, retrying", "intermediate 429 logs at Debug")
+	assert.Contains(t, out, "API throttled, gave up", "terminal 429 logs at Warn")
+	assert.Equal(t, int64(2), c.GetThrottlingCount(), "both onError firings count")
+}
+
+// TestOnError_503Exhausted_NoRetryLog verifies non-429 codes never emit the
+// per-attempt onError "retrying" line (their retries go through onRetry); only
+// the terminal 503 reaches onError, logged at Warn.
+func TestOnError_503Exhausted_NoRetryLog(t *testing.T) {
+	srv := httptest.NewServer(statusSequenceHandler(503))
+	defer srv.Close()
+
+	c := newGosipTestClient(srv.URL, map[int]int{503: 1})
+	logs := captureLogs(c)
+
+	req, _ := http.NewRequest("GET", srv.URL+"/_api/web", nil)
+	resp, err := c.gosipClient.Execute(req)
+	require.Error(t, err)
+	resp.Body.Close()
+
+	out := logs.String()
+	assert.Contains(t, out, "API throttled, gave up", "terminal 503 logs at Warn")
+	assert.NotContains(t, out, "API throttled, retrying", "intermediate 503 does not fire onError")
 }

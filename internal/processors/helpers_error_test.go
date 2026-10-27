@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"golang.org/x/net/http2"
 
 	"sprawler/internal/model"
 )
@@ -70,6 +71,25 @@ func TestParseError_EOF(t *testing.T) {
 
 func TestParseError_UnexpectedEOF(t *testing.T) {
 	cat, status := parseError(io.ErrUnexpectedEOF)
+	assert.Equal(t, model.ErrNetwork, cat)
+	assert.Equal(t, 0, status)
+}
+
+func TestParseError_HTTP2StreamError(t *testing.T) {
+	cat, status := parseError(http2.StreamError{StreamID: 133843, Code: http2.ErrCodeCancel})
+	assert.Equal(t, model.ErrNetwork, cat)
+	assert.Equal(t, 0, status)
+}
+
+func TestParseError_WrappedHTTP2StreamError(t *testing.T) {
+	err := fmt.Errorf("unable to request api: %w", http2.StreamError{Code: http2.ErrCodeInternal})
+	cat, status := parseError(err)
+	assert.Equal(t, model.ErrNetwork, cat)
+	assert.Equal(t, 0, status)
+}
+
+func TestParseError_HTTP2GoAway(t *testing.T) {
+	cat, status := parseError(http2.GoAwayError{ErrCode: http2.ErrCodeEnhanceYourCalm})
 	assert.Equal(t, model.ErrNetwork, cat)
 	assert.Equal(t, 0, status)
 }

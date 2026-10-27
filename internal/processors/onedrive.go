@@ -334,7 +334,7 @@ func (p *OneDriveProcessor) processSite(ctx context.Context, site model.Site, ou
 
 	profile, err := p.fetchUserProfile(ctx, profileData, workerID, counters)
 	if err != nil {
-		p.logger.Errorf("Worker %d: Unexpected error fetching profile for site %s: %v", workerID, site.SiteUrl, err)
+		p.logger.Debugf("Worker %d: Failed to fetch profile for site %s: %v", workerID, site.SiteUrl, err)
 		profileFailure = newOperationFailure(err)
 	}
 
